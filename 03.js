@@ -58,3 +58,22 @@ function averageOfNumbersInArray(array) {
 	}
 	return sum / array.length;
   }
+
+  //2) რომელიც პოულობს და აბრუნებს მაქსიმალურ რიცხვს მასივში. და მისი გამოყენებით დაბეჭდეთ თქვენს კოლექციაში არსებული 
+  //ყველაზე ძვირიანი მანქანის ფასი. შემდეგი მესიჯის სახით:
+  //“ჩვენს მარაგში არსებული ყველაზე ძვირიანი მანქანის ფასი არის : x” სადაც x რეალური რიცხვია.
+
+let maxPrice = maxPriceInarray(prices);
+
+console.log(`ჩვენს მარაგში არსებული ყველაზე ძვირიანი მანქანის ფასი არის: ${maxPrice}`);
+
+function maxPriceInarray(array) {
+    let max = array[0];
+    for(let i = 1; i < array.length; i++) {
+        let currentElement = array[i];
+        if(currentElement > max) {
+            max = currentElement
+        }
+    }
+    return max;
+}
