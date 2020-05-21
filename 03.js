@@ -77,3 +77,77 @@ function maxPriceInarray(array) {
     }
     return max;
 }
+
+//დაწერეთ ყველამ თქვენ-თქვენთვის საკლასო სამუშაოში გაკეთებულ ამოცანა user-ს შემოწმების შესახებ უნდა შექმნათ user-ების მასივი. 
+//ყველა user-ს უნდა ქონდეს username და password ველები. და შემდეგ უნდა დაწეროთ 2 ფუნქცია:
+//1) რომელიც ამოწმებს კონკრეტული string პარამეტრისთვის თუ არსებობს user ასეთი სახელით.
+//2)რომელიც ამოწმებს მოიძებნება თუ არა user შემდეგი ველებით არგუმენტად მიღებული 2 სტრინგი possibleUsername და possiblePassword
+//გამოიძახეთ ორივე ფუნქცია რამე ნებისმიერი string-ებისთვის და გააკეთეთ მესიჯების ლოგიკური ჯაჭვი რომ დაიბეჭდოს სწორი მესიჯები.
+//“მოცემული სახელით მომხმარებელი არ მოიებნა”,
+//“პაროლი არასწორია”,
+//“შეხვედით სისტემაში წარმატებით”.
+//და დაამატეთ მე3 ფუნქცია: პაროლის სიძლიერის შესამოწმებელი.
+//თუ მომხმარებლის პაროლის სიგრძე ნაკლებია 8ზე წარმატებულად სისტემაში შესვლის შემთხვევაში დაუწეროს:
+//“შეხვედით სისტემაში წარმატეით, თუმცა გთხოვთ შეცვალოთ პაროლი”
+
+let user1 = {
+    username: "Nino",
+    password: "Aa123456"
+};
+
+let user2 = {
+    username: "Natia",
+    password: "Aa123"
+};
+
+let user3 = {
+    username: "Giorgi",
+    password: "Aa12345678"
+};
+
+let user4 = {
+    username: "Nika",
+    password: "Aa123456789"
+};
+
+let users = [];
+users.push(user1);
+users.push(user2);
+users.push(user3);
+users.push(user4);
+
+function getFoundUser(users, possibleUsername) {
+    for(let i = 0; i < users.length; i++) {
+        if(users[i].username === possibleUsername) {
+            return users[i];
+        }
+    }
+}
+
+function checkPassword(user, possiblePassword) {
+    let isSame = user.password === possiblePassword;
+    return isSame;
+}
+
+function login(username, password) {
+    let possibleUsername = getFoundUser(users, username);
+    if(!possibleUsername) {
+        console.log("მოცემული სახელით მომხმარებელი არ მოიებნა")
+    } else {
+    let isPasswordValid = checkPassword(possibleUsername, password);
+    if (isPasswordValid) {
+  	  if (isPasswordValid, password.length < 8) {
+        console.log("შეხვედით სისტემაში წარმატეით, თუმცა გთხოვთ შეცვალოთ პაროლი");
+    		} else {
+                console.log("შეხვედით სისტემაში წარმატებით");
+           			}
+            } else {
+            console.log("პაროლი არასწორია");
+        }
+    }
+}
+
+
+
+
+login("Nino", "Aa123456");
